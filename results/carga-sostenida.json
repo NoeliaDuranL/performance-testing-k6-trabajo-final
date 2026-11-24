@@ -1,0 +1,233 @@
+{
+    "root_group": {
+        "checks": {},
+        "name": "",
+        "path": "",
+        "id": "d41d8cd98f00b204e9800998ecf8427e",
+        "groups": {
+            "Busqueda de productos": {
+                "path": "::Busqueda de productos",
+                "id": "8454c56e6c478e7a0492dbed372b1e22",
+                "groups": {},
+                "checks": {
+                    "Estado HTTP 200": {
+                        "name": "Estado HTTP 200",
+                        "path": "::Busqueda de productos::Estado HTTP 200",
+                        "id": "460763575243658047463c470b29c33c",
+                        "passes": 4703,
+                        "fails": 0
+                    },
+                    "Respuesta contiene lista de productos": {
+                        "name": "Respuesta contiene lista de productos",
+                        "path": "::Busqueda de productos::Respuesta contiene lista de productos",
+                        "id": "a84b773c267d6dc5cf8d2d6c2ed517b9",
+                        "passes": 4703,
+                        "fails": 0
+                    },
+                    "Tiempo menor a 500ms": {
+                        "fails": 23,
+                        "name": "Tiempo menor a 500ms",
+                        "path": "::Busqueda de productos::Tiempo menor a 500ms",
+                        "id": "732d2f022cd899f29bc2485eb76f61f9",
+                        "passes": 4680
+                    }
+                },
+                "name": "Busqueda de productos"
+            },
+            "Autenticacion y consulta de carrito": {
+                "name": "Autenticacion y consulta de carrito",
+                "path": "::Autenticacion y consulta de carrito",
+                "id": "989530d4d848afdb583a0be3c86c4727",
+                "groups": {},
+                "checks": {
+                    "Login HTTP 200": {
+                        "name": "Login HTTP 200",
+                        "path": "::Autenticacion y consulta de carrito::Login HTTP 200",
+                        "id": "1873ec658c44dc347c53923bfa4ce4c9",
+                        "passes": 4703,
+                        "fails": 0
+                    },
+                    "Login menor a 500ms": {
+                        "name": "Login menor a 500ms",
+                        "path": "::Autenticacion y consulta de carrito::Login menor a 500ms",
+                        "id": "0848ae394025b9a9fded139f4af13337",
+                        "passes": 4656,
+                        "fails": 47
+                    },
+                    "Token JWT recibido": {
+                        "fails": 0,
+                        "name": "Token JWT recibido",
+                        "path": "::Autenticacion y consulta de carrito::Token JWT recibido",
+                        "id": "833c98d533324347e20400b09261e006",
+                        "passes": 4656
+                    },
+                    "ID de carrito recibido": {
+                        "name": "ID de carrito recibido",
+                        "path": "::Autenticacion y consulta de carrito::ID de carrito recibido",
+                        "id": "033f625782b9c7d818a20e96f22af17c",
+                        "passes": 4656,
+                        "fails": 0
+                    },
+                    "Carrito HTTP 200": {
+                        "name": "Carrito HTTP 200",
+                        "path": "::Autenticacion y consulta de carrito::Carrito HTTP 200",
+                        "id": "e18c74952ff61d6442cda44450931bac",
+                        "passes": 4656,
+                        "fails": 0
+                    },
+                    "Carrito menor a 500ms": {
+                        "path": "::Autenticacion y consulta de carrito::Carrito menor a 500ms",
+                        "id": "997d338d465aa753f5e5f5ddedecf752",
+                        "passes": 4361,
+                        "fails": 295,
+                        "name": "Carrito menor a 500ms"
+                    },
+                    "Respuesta contiene productos del carrito": {
+                        "name": "Respuesta contiene productos del carrito",
+                        "path": "::Autenticacion y consulta de carrito::Respuesta contiene productos del carrito",
+                        "id": "de723912cb954142f582368ba58a1199",
+                        "passes": 4656,
+                        "fails": 0
+                    }
+                }
+            }
+        }
+    },
+    "metrics": {
+        "http_req_duration{expected_response:true}": {
+            "med": 310.9078,
+            "max": 1016.51,
+            "p(90)": 403.60346999999996,
+            "p(95)": 445.8756049999999,
+            "p(99)": 609.934048999999,
+            "avg": 299.3886938628928,
+            "min": 0.7001
+        },
+        "group_duration": {
+            "p(90)": 1756.6392,
+            "p(95)": 1821.1258,
+            "p(99)": 2006.2852800000005,
+            "avg": 1443.0374305868593,
+            "min": 500.71,
+            "med": 1381.5567,
+            "max": 2434.3184
+        },
+        "http_req_duration": {
+            "max": 1016.51,
+            "p(90)": 403.60346999999996,
+            "p(95)": 445.8756049999999,
+            "p(99)": 609.934048999999,
+            "avg": 299.3886938628928,
+            "min": 0.7001,
+            "med": 310.9078,
+            "thresholds": {
+                "p(95)<500": false
+            }
+        },
+        "vus": {
+            "value": 3,
+            "min": 2,
+            "max": 50
+        },
+        "data_sent": {
+            "count": 5239384,
+            "rate": 17432.918944357734
+        },
+        "http_req_tls_handshaking": {
+            "avg": 0,
+            "min": 0,
+            "med": 0,
+            "max": 0,
+            "p(90)": 0,
+            "p(95)": 0,
+            "p(99)": 0
+        },
+        "http_req_receiving": {
+            "avg": 1.6066170886075983,
+            "min": 0,
+            "med": 0.63585,
+            "max": 15.7065,
+            "p(90)": 5.13495,
+            "p(95)": 7.080269999999997,
+            "p(99)": 10.779074999999999
+        },
+        "http_req_waiting": {
+            "avg": 297.7785307708716,
+            "min": 0.5138,
+            "med": 309.3073,
+            "max": 1016.51,
+            "p(90)": 402.58643,
+            "p(95)": 444.89922499999994,
+            "p(99)": 606.1282859999994
+        },
+        "iteration_duration": {
+            "p(99)": 3430.9581139999987,
+            "avg": 2886.075900021277,
+            "min": 1513.926,
+            "med": 2952.8416,
+            "max": 3773.2021,
+            "p(90)": 3156.85714,
+            "p(95)": 3222.4762699999997
+        },
+        "http_reqs": {
+            "count": 14062,
+            "rate": 46.78826865821601
+        },
+        "http_req_connecting": {
+            "min": 0,
+            "med": 0,
+            "max": 1.0988,
+            "p(90)": 0,
+            "p(95)": 0,
+            "p(99)": 0,
+            "avg": 0.0016480657090029865
+        },
+        "http_req_sending": {
+            "min": 0,
+            "med": 0,
+            "max": 10.0154,
+            "p(90)": 0,
+            "p(95)": 0,
+            "p(99)": 0,
+            "avg": 0.003546003413454701
+        },
+        "vus_max": {
+            "value": 50,
+            "min": 50,
+            "max": 50
+        },
+        "iterations": {
+            "count": 4703,
+            "rate": 15.648217003242063
+        },
+        "data_received": {
+            "rate": 152519.90373763905,
+            "count": 45839159
+        },
+        "checks": {
+            "fails": 365,
+            "passes": 46430,
+            "thresholds": {
+                "rate>0.99": false
+            },
+            "value": 0.9922000213698045
+        },
+        "http_req_failed": {
+            "passes": 0,
+            "fails": 14062,
+            "thresholds": {
+                "rate<0.01": false
+            },
+            "value": 0
+        },
+        "http_req_blocked": {
+            "p(90)": 0,
+            "p(95)": 0,
+            "p(99)": 0,
+            "avg": 0.003540897454131702,
+            "min": 0,
+            "med": 0,
+            "max": 8.8083
+        }
+    }
+}
