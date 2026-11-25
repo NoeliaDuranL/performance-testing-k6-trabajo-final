@@ -1,0 +1,44 @@
+     █ Busqueda de productos
+
+       ✓ Busqueda: HTTP 200
+       ✓ Busqueda: respuesta con lista de productos
+       ✗ Busqueda < 500 ms
+        ↳  99% — ✓ 5568 / ✗ 29
+
+     █ Autenticacion y consulta de carrito
+
+       ✓ Login: HTTP 200
+       ✓ Login: token JWT recibido
+       ✓ Login: ID de carrito recibido
+       ✓ Login: sesion del usuario correcto
+       ✗ Login < 500 ms
+        ↳  99% — ✓ 5559 / ✗ 38
+       ✓ Carrito: HTTP 200
+       ✓ Carrito: corresponde al ID correlacionado
+       ✓ Carrito: contiene lista de productos
+       ✗ Carrito < 500 ms
+        ↳  99% — ✓ 5551 / ✗ 46
+
+     checks.........................: 99.83%  67051 out of 67164
+     ✓ { tipo:funcional }...........: 100.00% 50373 out of 50373
+     ✓ { tipo:rendimiento }.........: 99.32%  16678 out of 16791
+     data_received..................: 20 MB   67 kB/s
+     data_sent......................: 6.7 MB  22 kB/s
+     group_duration.................: avg=1.21s    min=1s      med=1.18s    max=3.28s    p(90)=1.36s    p(95)=1.44s    p(99)=1.71s
+     http_req_blocked...............: avg=9.28µs   min=1.59µs  med=4µs      max=63.56ms  p(90)=5.85µs   p(95)=6.62µs   p(99)=19.75µs
+     http_req_connecting............: avg=4.48µs   min=0s      med=0s       max=63.45ms  p(90)=0s       p(95)=0s       p(99)=0s
+   ✓ http_req_duration..............: avg=139.41ms min=4.17ms  med=129.85ms max=2.12s    p(90)=215.98ms p(95)=261.3ms  p(99)=433.31ms
+       { expected_response:true }...: avg=139.41ms min=4.17ms  med=129.85ms max=2.12s    p(90)=215.98ms p(95)=261.3ms  p(99)=433.31ms
+     ✓ { name:BuscarProductos }.....: avg=128.3ms  min=4.17ms  med=120.37ms max=2.06s    p(90)=201.14ms p(95)=239.59ms p(99)=405.97ms
+     ✓ { name:ConsultarCarrito }....: avg=155.65ms min=19.53ms med=142.64ms max=952.52ms p(90)=242.39ms p(95)=296.61ms p(99)=462.37ms
+     ✓ { name:Login }...............: avg=135.42ms min=6.58ms  med=127.63ms max=2.12s    p(90)=201.79ms p(95)=246.41ms p(99)=421.77ms
+   ✓ http_req_failed................: 0.00%   0 out of 16842
+     http_req_receiving.............: avg=83.87µs  min=24.31µs med=79.6µs   max=543.08µs p(90)=110.4µs  p(95)=122.4µs  p(99)=167.99µs
+     http_req_sending...............: avg=26.62µs  min=5.8µs   med=29.8µs   max=7.68ms   p(90)=42.19µs  p(95)=47.05µs  p(99)=65.54µs
+     http_req_tls_handshaking.......: avg=0s       min=0s      med=0s       max=0s       p(90)=0s       p(95)=0s       p(99)=0s
+     http_req_waiting...............: avg=139.3ms  min=4.07ms  med=129.74ms max=2.12s    p(90)=215.88ms p(95)=261.23ms p(99)=433.14ms
+     http_reqs......................: 16842   55.816239/s
+     iteration_duration.............: avg=2.42s    min=2.03s   med=2.39s    max=4.29s    p(90)=2.59s    p(95)=2.7s     p(99)=3.27s
+     iterations.....................: 5597    18.549073/s
+     vus............................: 2       min=0              max=50
+     vus_max........................: 50      min=50             max=50

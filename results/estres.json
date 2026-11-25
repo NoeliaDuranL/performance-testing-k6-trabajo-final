@@ -1,0 +1,297 @@
+{
+    "root_group": {
+        "id": "d41d8cd98f00b204e9800998ecf8427e",
+        "groups": {
+            "Busqueda de productos": {
+                "name": "Busqueda de productos",
+                "path": "::Busqueda de productos",
+                "id": "8454c56e6c478e7a0492dbed372b1e22",
+                "groups": {},
+                "checks": {
+                        "Busqueda: HTTP 200": {
+                            "path": "::Busqueda de productos::Busqueda: HTTP 200",
+                            "id": "f9c3ad0408eb9bf3df1b6d925c577225",
+                            "passes": 9840,
+                            "fails": 0,
+                            "name": "Busqueda: HTTP 200"
+                        },
+                        "Busqueda: respuesta con lista de productos": {
+                            "name": "Busqueda: respuesta con lista de productos",
+                            "path": "::Busqueda de productos::Busqueda: respuesta con lista de productos",
+                            "id": "10f7edb77f014bca562553190e9bb9c1",
+                            "passes": 9840,
+                            "fails": 0
+                        },
+                        "Busqueda < 500 ms": {
+                            "path": "::Busqueda de productos::Busqueda < 500 ms",
+                            "id": "ce3a36bbf3bd701213f66a9354f11840",
+                            "passes": 2398,
+                            "fails": 7442,
+                            "name": "Busqueda < 500 ms"
+                        }
+                    }
+            },
+            "Autenticacion y consulta de carrito": {
+                "path": "::Autenticacion y consulta de carrito",
+                "id": "989530d4d848afdb583a0be3c86c4727",
+                "groups": {},
+                "checks": {
+                        "Login: HTTP 200": {
+                            "name": "Login: HTTP 200",
+                            "path": "::Autenticacion y consulta de carrito::Login: HTTP 200",
+                            "id": "0ccee10afe6431e1086da969efba96d2",
+                            "passes": 9840,
+                            "fails": 0
+                        },
+                        "Login: token JWT recibido": {
+                            "name": "Login: token JWT recibido",
+                            "path": "::Autenticacion y consulta de carrito::Login: token JWT recibido",
+                            "id": "f9378ad66460ab08bf7fe40f03762e4f",
+                            "passes": 9840,
+                            "fails": 0
+                        },
+                        "Login: ID de carrito recibido": {
+                            "passes": 9840,
+                            "fails": 0,
+                            "name": "Login: ID de carrito recibido",
+                            "path": "::Autenticacion y consulta de carrito::Login: ID de carrito recibido",
+                            "id": "f11ee036756259d6fc54fd0d40234136"
+                        },
+                        "Login: sesion del usuario correcto": {
+                            "passes": 9840,
+                            "fails": 0,
+                            "name": "Login: sesion del usuario correcto",
+                            "path": "::Autenticacion y consulta de carrito::Login: sesion del usuario correcto",
+                            "id": "c06e4367667a81c96388f16169910631"
+                        },
+                        "Login < 500 ms": {
+                            "id": "b8f4e80646511c4d5fb596a085a8f433",
+                            "passes": 2436,
+                            "fails": 7404,
+                            "name": "Login < 500 ms",
+                            "path": "::Autenticacion y consulta de carrito::Login < 500 ms"
+                        },
+                        "Carrito: HTTP 200": {
+                            "name": "Carrito: HTTP 200",
+                            "path": "::Autenticacion y consulta de carrito::Carrito: HTTP 200",
+                            "id": "8a51c50ae968e892c26280d1627baaf2",
+                            "passes": 9840,
+                            "fails": 0
+                        },
+                        "Carrito: corresponde al ID correlacionado": {
+                            "name": "Carrito: corresponde al ID correlacionado",
+                            "path": "::Autenticacion y consulta de carrito::Carrito: corresponde al ID correlacionado",
+                            "id": "8496e44792366e2319459e6ae46ab99f",
+                            "passes": 9840,
+                            "fails": 0
+                        },
+                        "Carrito: contiene lista de productos": {
+                            "name": "Carrito: contiene lista de productos",
+                            "path": "::Autenticacion y consulta de carrito::Carrito: contiene lista de productos",
+                            "id": "220d1ccf743b47cdc576d482cf0c4d6e",
+                            "passes": 9840,
+                            "fails": 0
+                        },
+                        "Carrito < 500 ms": {
+                            "path": "::Autenticacion y consulta de carrito::Carrito < 500 ms",
+                            "id": "d5a3908f290e08976b6ac1c3f39e1f94",
+                            "passes": 2357,
+                            "fails": 7483,
+                            "name": "Carrito < 500 ms"
+                        }
+                    },
+                "name": "Autenticacion y consulta de carrito"
+            }
+        },
+        "checks": {},
+        "name": "",
+        "path": ""
+    },
+    "metrics": {
+        "http_req_tls_handshaking": {
+            "min": 0,
+            "med": 0,
+            "max": 0,
+            "p(90)": 0,
+            "p(95)": 0,
+            "p(99)": 0,
+            "avg": 0
+        },
+        "http_req_duration{name:ConsultarCarrito}": {
+            "med": 1516.712191,
+            "max": 5752.450379,
+            "p(90)": 2510.1441663,
+            "p(95)": 2599.3707109999996,
+            "p(99)": 3336.7001294800066,
+            "avg": 1378.4851099219495,
+            "min": 19.554023,
+            "thresholds": {
+                "p(95)<500": true
+            }
+        },
+        "checks{tipo:funcional}": {
+            "passes": 88560,
+            "fails": 0,
+            "thresholds": {
+                "rate>0.99": false
+            },
+            "value": 1
+        },
+        "http_req_duration{expected_response:true}": {
+            "p(90)": 2612.774017,
+            "p(95)": 2725.309349,
+            "p(99)": 2993.5126138999985,
+            "avg": 1379.5076613639706,
+            "min": 4.223724,
+            "med": 1514.229512,
+            "max": 5752.450379
+        },
+        "vus_max": {
+            "value": 200,
+            "min": 200,
+            "max": 200
+        },
+        "data_received": {
+            "count": 36947589,
+            "rate": 76491.84802313216
+        },
+        "http_req_duration{name:Login}": {
+            "p(90)": 2667.141275,
+            "p(95)": 2759.96557035,
+            "p(99)": 2940.2665974399997,
+            "avg": 1391.6563735350587,
+            "min": 6.66959,
+            "med": 1522.84514,
+            "max": 3175.488413,
+            "thresholds": {
+                "p(95)<500": true
+            }
+        },
+        "iteration_duration": {
+            "p(99)": 10177.84152943,
+            "avg": 6147.617826766769,
+            "min": 2035.266714,
+            "med": 6617.577391999999,
+            "max": 13151.1631,
+            "p(90)": 9671.1525629,
+            "p(95)": 9835.726585249999
+        },
+        "http_req_blocked": {
+            "max": 70.849265,
+            "p(90)": 0.005294,
+            "p(95)": 0.0064165,
+            "p(99)": 0.018253299999999816,
+            "avg": 0.01059640252274201,
+            "min": 0.001454,
+            "med": 0.003691
+        },
+        "vus": {
+            "value": 1,
+            "min": 0,
+            "max": 200
+        },
+        "http_req_waiting": {
+            "avg": 1379.404280513335,
+            "min": 4.125482,
+            "med": 1514.153075,
+            "max": 5752.361085,
+            "p(90)": 2612.684447,
+            "p(95)": 2725.1761235,
+            "p(99)": 2993.4001506999984
+        },
+        "checks{tipo:rendimiento}": {
+            "passes": 7191,
+            "fails": 22329,
+            "thresholds": {
+                "rate>0.95": true
+            },
+            "value": 0.24359756097560975
+        },
+        "http_req_sending": {
+            "p(90)": 0.037953,
+            "p(95)": 0.044029,
+            "p(99)": 0.07378189999999987,
+            "avg": 0.022078170369618896,
+            "min": 0.004465,
+            "med": 0.014045,
+            "max": 0.964486
+        },
+        "group_duration": {
+            "med": 2730.1635305,
+            "max": 9435.39937,
+            "p(90)": 5899.0221357,
+            "p(95)": 6115.82751225,
+            "p(99)": 6444.709566679999,
+            "avg": 3073.760559479461,
+            "min": 1004.669476
+        },
+        "iterations": {
+            "count": 9840,
+            "rate": 20.371553460433386
+        },
+        "http_req_duration{name:BuscarProductos}": {
+            "p(95)": 2753.12364175,
+            "p(99)": 2947.06844077,
+            "avg": 1375.3876373469548,
+            "min": 4.223724,
+            "med": 1511.392658,
+            "max": 3187.743267,
+            "p(90)": 2649.2098109999997,
+            "thresholds": {
+                "p(95)<500": true
+            }
+        },
+        "http_req_duration": {
+            "min": 4.223724,
+            "med": 1514.229512,
+            "max": 5752.450379,
+            "p(90)": 2612.774017,
+            "p(95)": 2725.309349,
+            "p(99)": 2993.5126138999985,
+            "avg": 1379.5076613639706,
+            "thresholds": {
+                "p(95)<500": true,
+                "p(99)<1000": true
+            }
+        },
+        "checks": {
+            "passes": 95751,
+            "fails": 22329,
+            "value": 0.8108993902439025
+        },
+        "http_reqs": {
+            "count": 29571,
+            "rate": 61.22024465228411
+        },
+        "http_req_connecting": {
+            "p(90)": 0,
+            "p(95)": 0,
+            "p(99)": 0,
+            "avg": 0.005985225491190694,
+            "min": 0,
+            "med": 0,
+            "max": 70.767297
+        },
+        "http_req_receiving": {
+            "p(95)": 0.1594235,
+            "p(99)": 0.2236768999999998,
+            "avg": 0.08130268026106612,
+            "min": 0.018074,
+            "med": 0.073298,
+            "max": 0.580715,
+            "p(90)": 0.109249
+        },
+        "data_sent": {
+            "count": 11692002,
+            "rate": 24205.715833586797
+        },
+        "http_req_failed": {
+            "passes": 0,
+            "fails": 29571,
+            "thresholds": {
+                "rate<0.01": false
+            },
+            "value": 0
+        }
+    }
+}

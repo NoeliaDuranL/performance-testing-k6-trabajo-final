@@ -1,4 +1,6 @@
-
+# k6 envía sus métricas por Remote Write (push).
+# Además se recolectan las métricas internas de Juice Shop (Node.js: CPU del
+# proceso, lag del event loop y memoria) para diagnosticar cuellos de botella.
 global:
   scrape_interval: 5s
 
@@ -6,3 +8,8 @@ scrape_configs:
   - job_name: "prometheus"
     static_configs:
       - targets: ["localhost:9090"]
+
+  - job_name: "juice-shop"
+    metrics_path: /metrics
+    static_configs:
+      - targets: ["juice-shop:3000"]

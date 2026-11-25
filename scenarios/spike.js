@@ -1,24 +1,23 @@
+// Prueba de pico (spike test).
+// Rampa hasta una línea base de 10 VUs, pico repentino a 100 VUs (x10) y fase de recuperación
+// de 1m30s a 10 VUs para observar si el sistema vuelve a sus tiempos normales.
+import { construirOpciones } from '../utils/config.js';
+import { prepararUsuarios } from '../utils/preparacion.js';
+import flujoUsuario from '../flujos/flujoUsuario.js';
 
-import flujoCompleto from './carga.js';
+export const options = construirOpciones('spike', [
+  { duration: '30s', target: 10 },   // rampa hasta la línea base
+  { duration: '10s', target: 100 },  // pico repentino
+  { duration: '1m', target: 100 },   // mantenimiento del pico
+  { duration: '10s', target: 10 },   // caída repentina
+  { duration: '1m30s', target: 10 }, // recuperación
+  { duration: '20s', target: 0 },
+]);
 
-export const options = {
-    stages: [
-        { duration: '10s', target: 10 },
-        { duration: '40s', target: 10 },
-        { duration: '5s', target: 100 },
-        { duration: '40s', target: 100 },
-        { duration: '5s', target: 10 },
-        { duration: '1m', target: 10 },
-        { duration: '20s', target: 0 },
-    ],
-
-    thresholds: {
-        http_req_duration: ['p(95)<500'],
-        http_req_failed: ['rate<0.01'],
-        checks: ['rate>0.99'],
-    },
-};
+export function setup() {
+  prepararUsuarios();
+}
 
 export default function () {
-    flujoCompleto();
+  flujoUsuario();
 }

@@ -1,28 +1,19 @@
+// Prueba de carga sostenida (load test).
+// Carga nominal: 50 VUs durante 4 minutos, con rampas de subida y bajada.
+import { construirOpciones } from '../utils/config.js';
+import { prepararUsuarios } from '../utils/preparacion.js';
+import flujoUsuario from '../flujos/flujoUsuario.js';
 
-import { group } from 'k6';
-import catalogo from './catalogo.js';
-import autenticacion from './autenticacion.js';
+export const options = construirOpciones('carga_sostenida', [
+  { duration: '30s', target: 50 }, // rampa de subida
+  { duration: '4m', target: 50 },  // carga nominal sostenida
+  { duration: '30s', target: 0 },  // rampa de bajada
+]);
 
-export const options = {
-    stages: [
-        { duration: '30s', target: 50 },
-        { duration: '4m', target: 50 },
-        { duration: '30s', target: 0 },
-    ],
-
-    thresholds: {
-        http_req_duration: ['p(95)<500'],
-        http_req_failed: ['rate<0.01'],
-        checks: ['rate>0.99'],
-    },
-};
+export function setup() {
+  prepararUsuarios();
+}
 
 export default function () {
-    group('Busqueda de productos', function () {
-        catalogo();
-    });
-
-    group('Autenticacion y consulta de carrito', function () {
-        autenticacion();
-    });
+  flujoUsuario();
 }

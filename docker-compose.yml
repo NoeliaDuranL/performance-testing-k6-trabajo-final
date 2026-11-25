@@ -1,7 +1,20 @@
-
+# Entorno local completo de pruebas de performance.
+#   docker compose up -d                       -> Juice Shop + Prometheus + Grafana
+#   docker compose run --rm k6 run ...         -> ejecuta k6 dentro de la misma red
 services:
+  juice-shop:
+    image: bkimminich/juice-shop:v17.1.1
+    container_name: juice-shop
+    ports:
+      - "3000:3000"
+    # Recursos fijos para el sistema bajo prueba: resultados reproducibles y
+    # aislados del generador de carga (k6), que corre en la misma máquina.
+    cpus: "2.0"
+    mem_limit: 2g
+    restart: unless-stopped
+
   prometheus:
-    image: prom/prometheus:latest
+    image: prom/prometheus:v2.55.1
     container_name: performance-prometheus
     ports:
       - "9090:9090"
@@ -10,21 +23,45 @@ services:
     command:
       - "--config.file=/etc/prometheus/prometheus.yml"
       - "--web.enable-remote-write-receiver"
+      - "--enable-feature=native-histograms"
     restart: unless-stopped
 
   grafana:
-    image: grafana/grafana:latest
+    image: grafana/grafana:11.3.0
     container_name: performance-grafana
     ports:
       - "3001:3000"
     environment:
       - GF_SECURITY_ADMIN_USER=admin
       - GF_SECURITY_ADMIN_PASSWORD=admin
+      # Acceso de solo lectura sin login (entorno local de pruebas).
+      - GF_AUTH_ANONYMOUS_ENABLED=true
+      - GF_AUTH_ANONYMOUS_ORG_ROLE=Viewer
+      - GF_DASHBOARDS_DEFAULT_HOME_DASHBOARD_PATH=/var/lib/grafana/dashboards/dashboard-k6.json
     volumes:
+      - ./grafana/provisioning:/etc/grafana/provisioning:ro
+      - ./grafana/dashboards:/var/lib/grafana/dashboards:ro
       - grafana-storage:/var/lib/grafana
     depends_on:
       - prometheus
     restart: unless-stopped
+
+  k6:
+    image: grafana/k6:0.54.0
+    profiles: ["k6"]
+    working_dir: /proyecto
+    volumes:
+      - .:/proyecto
+    environment:
+      - BASE_URL=http://juice-shop:3000
+      - K6_OUT=experimental-prometheus-rw
+      - K6_PROMETHEUS_RW_SERVER_URL=http://prometheus:9090/api/v1/write
+      - K6_PROMETHEUS_RW_TREND_AS_NATIVE_HISTOGRAM=true
+      - K6_PROMETHEUS_RW_PUSH_INTERVAL=2s
+      - K6_PROMETHEUS_RW_STALE_MARKERS=true
+    depends_on:
+      - juice-shop
+      - prometheus
 
 volumes:
   grafana-storage:
